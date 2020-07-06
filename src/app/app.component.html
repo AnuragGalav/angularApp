@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change CSV to Table Format</title>
+</head>
+
+<body>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 center">
+        <h2>Input your CSV file and we display its data here in table.</h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="row center">
+      <div class="col-12 center">
+        <label for="csvFile" class="custom-file-upload"><strong> Upload CSV file: </strong>
+          <input type="file" accept=".csv" id="csvFile" [formControl]="csvFile" (change)="handleFileSelect($event)">
+        </label>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div *ngIf="showButton" class="container">
+    <div class="row">
+      <div class="col-12 center">
+        <button class="btn btn-primary" (click)="convertCSVtoJSON()"> Change CSV to table
+        </button>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table *ngIf="showTable" mat-table [dataSource]="tests" class="mat-elevation-z8 table-striped">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="phoneNum">
+            <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNum}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

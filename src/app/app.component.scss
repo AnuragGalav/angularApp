@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.center {
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
